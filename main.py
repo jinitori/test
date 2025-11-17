@@ -20,8 +20,8 @@ app = Flask(__name__)
 # ---------------------------
 def send_email(to_email, subject, body):
 
-    # 🔥 Cloud Run에 Secret Manager로부터 마운트될 경로
-    service_key_path = os.environ.get("SERVICE_KEY_PATH", "/secrets/secret")
+    # Secret Manager에서 마운트된 실제 파일 경로
+    service_key_path = "/secrets/service_key.json"
 
     creds = service_account.Credentials.from_service_account_file(
         service_key_path,
